@@ -185,4 +185,107 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle, 0deg), hsl(271 91% 70%), hsl(252 91% 60%), hsl(287 91% 65%), hsl(271 91% 70%));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: spin-slow 6s linear infinite;
+    pointer-events: none;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  /* Magnetic shine sweep on hover */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, hsl(0 0% 100% / 0.18) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.9s ease;
+    pointer-events: none;
+  }
+  .shine:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* Tilt-on-hover */
+  .tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .tilt:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-6deg) translateY(-6px);
+  }
+
+  /* Scrolling marquee text — large display */
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Spotlight cursor card */
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), hsl(271 91% 70% / 0.15), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Animated grid background */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary-glow) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary-glow) / 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
+  }
+
+  .bg-noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes spin-slow {
+  to { --angle: 360deg; }
 }
