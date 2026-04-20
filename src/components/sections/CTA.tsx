@@ -12,6 +12,10 @@ export const CTA = () => {
           <div className="absolute -bottom-32 -right-20 w-96 h-96 rounded-full bg-primary/50 blur-3xl animate-float-slow" style={{ animationDelay: "3s" }} />
 
           <div className="relative reveal">
+            <div className="inline-flex items-center gap-2 rounded-full bg-background/20 backdrop-blur-md border border-primary-foreground/20 px-4 py-1.5 mb-6">
+              <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
+              <span className="text-xs uppercase tracking-[0.2em] text-primary-foreground/90">Now booking — Q3 2025</span>
+            </div>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground leading-tight">
               Ready to elevate your brand?
             </h2>

@@ -52,11 +52,19 @@ export const Portfolio = () => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visible.map((p, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-6 auto-rows-[18rem] gap-6">
+          {visible.map((p, i) => {
+            // Bento layout: feature first item large
+            const span =
+              active === "All" && i === 0
+                ? "lg:col-span-4 lg:row-span-2"
+                : active === "All" && i === 3
+                ? "lg:col-span-4"
+                : "lg:col-span-2";
+            return (
             <article
               key={p.title}
-              className="reveal group relative rounded-3xl overflow-hidden glass aspect-[4/3] cursor-pointer"
+              className={`reveal group relative rounded-3xl overflow-hidden glass cursor-pointer ${span}`}
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               <img
@@ -65,9 +73,10 @@ export const Portfolio = () => {
                 loading="lazy"
                 width={1024}
                 height={768}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/0 via-transparent to-primary-glow/0 group-hover:from-primary/30 group-hover:to-primary-glow/20 transition-all duration-700" />
 
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <span className="inline-block w-fit text-xs uppercase tracking-wider px-3 py-1 rounded-full bg-primary/30 backdrop-blur-md border border-primary-glow/40 text-foreground mb-3">
@@ -83,8 +92,14 @@ export const Portfolio = () => {
                   </Button>
                 </div>
               </div>
+
+              {/* corner badge */}
+              <div className="absolute top-5 right-5 h-10 w-10 rounded-full glass-strong inline-flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                <ArrowUpRight className="h-4 w-4 text-foreground" />
+              </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

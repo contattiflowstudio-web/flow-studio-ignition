@@ -1,38 +1,72 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Star } from "lucide-react";
 import heroMesh from "@/assets/hero-mesh.jpg";
+
+const rotatingWords = ["Convert", "Inspire", "Scale", "Stand Out"];
 
 export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden grain"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-noise"
     >
-      {/* Mesh gradient background */}
+      {/* Mesh gradient + grid background */}
       <div className="absolute inset-0 mesh-bg" />
+      <div className="absolute inset-0 bg-grid opacity-60" />
       <img
         src={heroMesh}
         alt=""
         aria-hidden="true"
         width={1920}
         height={1280}
-        className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
+        className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
 
-      {/* Floating shapes */}
-      <div className="absolute top-1/4 -left-10 w-72 h-72 rounded-full bg-primary/30 blur-3xl animate-float-slow" />
-      <div className="absolute bottom-1/4 -right-10 w-96 h-96 rounded-full bg-primary-glow/25 blur-3xl animate-float-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-accent/20 blur-2xl animate-float" />
+      {/* Floating organic blobs */}
+      <div className="absolute top-[15%] -left-20 w-[28rem] h-[28rem] bg-primary/30 blur-3xl animate-blob animate-float-slow" />
+      <div className="absolute bottom-[10%] -right-20 w-[34rem] h-[34rem] bg-primary-glow/25 blur-3xl animate-blob animate-float-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute top-[35%] right-[20%] w-48 h-48 bg-accent/30 blur-2xl animate-blob animate-float" />
+
+      {/* Orbiting decorative ring (desktop only) */}
+      <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vmin] h-[120vmin] pointer-events-none">
+        <div className="absolute inset-0 rounded-full border border-primary-glow/10 animate-spin-slow" />
+        <div className="absolute inset-[8%] rounded-full border border-primary-glow/15 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "20s" }} />
+        <div className="absolute inset-[18%] rounded-full border border-primary-glow/10" />
+      </div>
 
       <div className="container relative z-10 pt-32 pb-20 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 mb-8 animate-fade-in">
-          <Sparkles className="h-4 w-4 text-primary-glow" />
-          <span className="text-sm text-foreground/80">A creative-tech studio for ambitious brands</span>
+        {/* Badge with avatars */}
+        <div className="inline-flex items-center gap-3 rounded-full glass px-4 py-2 mb-8 animate-fade-in shine">
+          <span className="flex -space-x-2">
+            {[1, 2, 3].map((i) => (
+              <span
+                key={i}
+                className="h-6 w-6 rounded-full border-2 border-background bg-gradient-primary"
+              />
+            ))}
+          </span>
+          <div className="flex items-center gap-1 text-primary-glow">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-3 w-3 fill-current" />
+            ))}
+          </div>
+          <span className="text-xs sm:text-sm text-foreground/80">Trusted by 120+ ambitious brands</span>
         </div>
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[1.05] max-w-5xl mx-auto animate-fade-in-up">
-          We Build <span className="text-gradient">Digital Experiences</span> That Convert
+        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-extrabold leading-[1.02] max-w-6xl mx-auto animate-fade-in-up tracking-tighter">
+          We Build Digital<br />
+          Experiences That{" "}
+          <span className="relative inline-flex items-baseline">
+            <span className="relative h-[1em] overflow-hidden align-baseline">
+              <span className="flex flex-col text-gradient" style={{ animation: "tick 8s ease-in-out infinite" }}>
+                {rotatingWords.map((w) => (
+                  <span key={w} className="block leading-[1]">{w}.</span>
+                ))}
+                <span className="block leading-[1] text-gradient">{rotatingWords[0]}.</span>
+              </span>
+            </span>
+          </span>
         </h1>
 
         <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "150ms", opacity: 0 }}>
@@ -40,10 +74,11 @@ export const Hero = () => {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "300ms", opacity: 0 }}>
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="hero" size="xl" className="group shine" asChild>
             <a href="#portfolio">
+              <Sparkles className="h-5 w-5" />
               See Our Work
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
           <Button variant="ghostGlow" size="xl" asChild>
@@ -58,12 +93,18 @@ export const Hero = () => {
             { k: "4.9/5", v: "Client rating" },
             { k: "2.8x", v: "Avg. ROI lift" },
           ].map((s) => (
-            <div key={s.v} className="glass rounded-2xl p-5">
+            <div key={s.v} className="glass rounded-2xl p-5 hover:shadow-glow-soft hover:-translate-y-1 transition-all duration-500">
               <div className="font-display text-2xl sm:text-3xl font-bold text-gradient-primary">{s.k}</div>
               <div className="text-xs sm:text-sm text-muted-foreground mt-1">{s.v}</div>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-muted-foreground animate-float">
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <div className="h-10 w-[1px] bg-gradient-to-b from-primary-glow to-transparent" />
       </div>
     </section>
   );
