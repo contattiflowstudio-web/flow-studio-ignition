@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
 import heroMesh from "@/assets/hero-mesh.jpg";
+import { HeroVisual } from "@/components/HeroVisual";
 
 const rotatingWords = ["Convert", "Inspire", "Scale", "Stand Out"];
 
@@ -23,17 +24,8 @@ export const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background" />
 
-      {/* Floating organic blobs */}
-      <div className="absolute top-[15%] -left-20 w-[28rem] h-[28rem] bg-primary/30 blur-3xl animate-blob animate-float-slow" />
-      <div className="absolute bottom-[10%] -right-20 w-[34rem] h-[34rem] bg-primary-glow/25 blur-3xl animate-blob animate-float-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute top-[35%] right-[20%] w-48 h-48 bg-accent/30 blur-2xl animate-blob animate-float" />
-
-      {/* Orbiting decorative ring (desktop only) */}
-      <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vmin] h-[120vmin] pointer-events-none">
-        <div className="absolute inset-0 rounded-full border border-primary-glow/10 animate-spin-slow" />
-        <div className="absolute inset-[8%] rounded-full border border-primary-glow/15 animate-spin-slow" style={{ animationDirection: "reverse", animationDuration: "20s" }} />
-        <div className="absolute inset-[18%] rounded-full border border-primary-glow/10" />
-      </div>
+      {/* Animated visual: parallax orbs, flow paths, floating chips, stars */}
+      <HeroVisual />
 
       <div className="container relative z-10 pt-32 pb-20 text-center">
         {/* Badge with avatars */}
