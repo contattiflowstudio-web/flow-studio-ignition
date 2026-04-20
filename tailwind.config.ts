@@ -147,6 +147,25 @@ export default {
           "0%, 90%, 100%": { transform: "translateY(0)" },
           "45%": { transform: "translateY(-100%)" },
         },
+        "draw": {
+          "0%": { strokeDashoffset: "1200" },
+          "100%": { strokeDashoffset: "0" },
+        },
+        "dash": {
+          "to": { strokeDashoffset: "-200" },
+        },
+        "orbit": {
+          "0%": { transform: "rotate(0deg) translateX(var(--r,180px)) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(var(--r,180px)) rotate(-360deg)" },
+        },
+        "twinkle": {
+          "0%, 100%": { opacity: "0.2", transform: "scale(0.8)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
+        },
+        "drift-x": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(20px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -163,6 +182,12 @@ export default {
         "spin-slow": "spin-slow 12s linear infinite",
         "blob": "blob 18s ease-in-out infinite",
         "shimmer": "shimmer 3s linear infinite",
+        "draw": "draw 4s ease-out forwards",
+        "dash": "dash 3s linear infinite",
+        "orbit": "orbit 20s linear infinite",
+        "orbit-slow": "orbit 32s linear infinite",
+        "twinkle": "twinkle 3s ease-in-out infinite",
+        "drift-x": "drift-x 8s ease-in-out infinite",
       },
     },
   },
