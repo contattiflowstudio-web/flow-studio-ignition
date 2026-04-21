@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
 import heroMesh from "@/assets/hero-mesh.jpg";
 import { HeroVisual } from "@/components/HeroVisual";
+import { HeroScene } from "@/components/HeroScene";
 
 const rotatingWords = ["Convert", "Inspire", "Scale", "Stand Out"];
 
@@ -26,6 +27,9 @@ export const Hero = () => {
 
       {/* Animated visual: parallax orbs, flow paths, floating chips, stars */}
       <HeroVisual />
+
+      {/* 3D animated abstract object */}
+      <HeroScene />
 
       <div className="container relative z-10 pt-32 pb-20 text-center">
         {/* Badge with avatars */}

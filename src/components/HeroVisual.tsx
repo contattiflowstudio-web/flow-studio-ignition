@@ -73,18 +73,18 @@ export const HeroVisual = () => {
       >
         <defs>
           <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="hsl(271 91% 70%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(271 91% 70%)" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="hsl(287 91% 65%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(200 100% 70%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(200 100% 70%)" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="hsl(215 95% 55%)" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="flowGrad2" x1="1" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="hsl(252 91% 65%)" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(252 91% 65%)" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="hsl(287 91% 75%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(215 95% 60%)" stopOpacity="0" />
+            <stop offset="50%" stopColor="hsl(215 95% 60%)" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="hsl(195 100% 80%)" stopOpacity="0" />
           </linearGradient>
           <radialGradient id="dot" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="hsl(287 91% 80%)" />
-            <stop offset="100%" stopColor="hsl(271 91% 60%)" stopOpacity="0" />
+            <stop offset="0%" stopColor="hsl(195 100% 85%)" />
+            <stop offset="100%" stopColor="hsl(215 95% 55%)" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -110,7 +110,7 @@ export const HeroVisual = () => {
         {/* Solid faint guide path */}
         <path
           d="M -50 460 Q 360 420, 720 480 T 1500 440"
-          stroke="hsl(271 91% 70% / 0.18)"
+          stroke="hsl(200 100% 70% / 0.18)"
           strokeWidth="1"
           strokeDasharray="600 1200"
           strokeDashoffset="0"
@@ -128,7 +128,7 @@ export const HeroVisual = () => {
         ].map((p, i) => (
           <g key={i} style={{ transformOrigin: `${p.cx}px ${p.cy}px`, animation: `twinkle 3.6s ease-in-out ${p.d} infinite` }}>
             <circle cx={p.cx} cy={p.cy} r={p.r * 5} fill="url(#dot)" opacity="0.6" />
-            <circle cx={p.cx} cy={p.cy} r={p.r} fill="hsl(287 91% 85%)" />
+            <circle cx={p.cx} cy={p.cy} r={p.r} fill="hsl(195 100% 90%)" />
           </g>
         ))}
       </svg>
@@ -177,7 +177,7 @@ export const HeroVisual = () => {
             width: s.s,
             height: s.s,
             animationDelay: s.d,
-            boxShadow: "0 0 12px hsl(287 91% 75%)",
+            boxShadow: "0 0 12px hsl(195 100% 80%)",
           }}
         />
       ))}
