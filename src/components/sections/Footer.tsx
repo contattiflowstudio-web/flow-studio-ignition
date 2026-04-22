@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, Waves } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
+import logo from "@/assets/flow-logo.jpeg";
 
 const Behance = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -13,8 +14,8 @@ export const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
             <a href="#home" className="flex items-center gap-2">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow-soft">
-                <Waves className="h-5 w-5 text-primary-foreground" strokeWidth={2.4} />
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden shadow-glow-soft ring-1 ring-primary/30 bg-background">
+                <img src={logo} alt="Flow Studio logo" className="h-full w-full object-cover" />
               </span>
               <span className="font-display text-xl font-bold">
                 Flow <span className="text-gradient-primary">Studio</span>
