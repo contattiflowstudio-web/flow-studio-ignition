@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/flow-logo.jpeg";
+import logo from "@/assets/flow-logo.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -34,8 +34,8 @@ export const Navbar = () => {
     >
       <div className="container flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 group">
-          <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden shadow-glow-soft ring-1 ring-primary/30 bg-background">
-            <img src={logo} alt="Flow Studio logo" className="h-full w-full object-cover" />
+          <span className="relative inline-flex h-10 w-10 items-center justify-center">
+            <img src={logo} alt="Flow Studio logo" className="h-full w-full object-contain" />
           </span>
           <span className="font-display text-xl font-bold tracking-tight">
             Flow <span className="text-gradient-primary">Studio</span>
