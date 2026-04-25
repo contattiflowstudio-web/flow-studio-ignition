@@ -35,7 +35,16 @@ export const Navbar = () => {
       <div className="container flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 group">
           <span className="relative inline-flex h-10 w-10 items-center justify-center">
-            <img src={logo} alt="Flow Studio logo" className="h-full w-full object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+            <img
+              src={logo}
+              alt="Flow Studio logo"
+              width={40}
+              height={40}
+              decoding="async"
+              fetchPriority="high"
+              loading="eager"
+              className="h-full w-full object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
+            />
           </span>
           <span className="font-display text-xl font-bold tracking-tight">
             Flow <span className="text-gradient-primary">Studio</span>
