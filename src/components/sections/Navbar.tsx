@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/flow-logo.png";
+import logo40 from "@/assets/flow-logo-40.png";
+import logo80 from "@/assets/flow-logo-80.png";
+import logo120 from "@/assets/flow-logo-120.png";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -36,7 +39,9 @@ export const Navbar = () => {
         <a href="#home" className="flex items-center gap-2 group">
           <span className="relative inline-flex h-10 w-10 items-center justify-center">
             <img
-              src={logo}
+              src={logo40}
+              srcSet={`${logo40} 1x, ${logo80} 2x, ${logo120} 3x`}
+              sizes="40px"
               alt="Flow Studio logo"
               width={40}
               height={40}
