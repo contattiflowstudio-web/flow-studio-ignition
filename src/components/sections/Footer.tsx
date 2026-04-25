@@ -15,7 +15,15 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <a href="#home" className="flex items-center gap-2">
               <span className="inline-flex h-10 w-10 items-center justify-center">
-                <img src={logo} alt="Flow Studio logo" className="h-full w-full object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+                <img
+                  src={logo}
+                  alt="Flow Studio logo"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
+                />
               </span>
               <span className="font-display text-xl font-bold">
                 Flow <span className="text-gradient-primary">Studio</span>
