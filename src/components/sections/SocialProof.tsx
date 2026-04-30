@@ -2,39 +2,24 @@ import { Star } from "lucide-react";
 import a1 from "@/assets/avatar-1.jpg";
 import a2 from "@/assets/avatar-2.jpg";
 import a3 from "@/assets/avatar-3.jpg";
+import { useLanguage } from "@/i18n/LanguageContext";
+import type { TranslationKey } from "@/i18n/translations";
 
 const logos = ["NOVARA", "PULSE", "HALCYON", "NORTHWIND", "VANTA", "ECLYPSE", "AXIOM", "LUMEN"];
 
-const testimonials = [
-  {
-    name: "Maya Chen",
-    role: "Founder, Lumen Analytics",
-    avatar: a1,
-    quote:
-      "Flow Studio rebuilt our site and our funnel doubled in 90 days. They don't just design — they think like growth operators.",
-  },
-  {
-    name: "Daniel Rivera",
-    role: "CEO, Northwind Goods",
-    avatar: a2,
-    quote:
-      "The team handled web, social and ads end-to-end. We finally have one partner who actually moves the revenue needle.",
-  },
-  {
-    name: "Sophie Laurent",
-    role: "Creative Director, Maison Velvet",
-    avatar: a3,
-    quote:
-      "Beautiful, sharp, on-brand. They captured our voice better than agencies twice their size — and shipped twice as fast.",
-  },
+const testimonialDefs: { name: string; roleKey: TranslationKey; quoteKey: TranslationKey; avatar: string }[] = [
+  { name: "Maya Chen", roleKey: "social.t1.role", quoteKey: "social.t1.quote", avatar: a1 },
+  { name: "Daniel Rivera", roleKey: "social.t2.role", quoteKey: "social.t2.quote", avatar: a2 },
+  { name: "Sophie Laurent", roleKey: "social.t3.role", quoteKey: "social.t3.quote", avatar: a3 },
 ];
 
 export const SocialProof = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative py-24">
       <div className="container">
         <p className="text-center text-sm uppercase tracking-[0.25em] text-muted-foreground mb-10 reveal">
-          Trusted by brands that want to grow
+          {t("social.kicker")}
         </p>
 
         <div className="relative overflow-hidden mask-fade reveal">
@@ -51,9 +36,9 @@ export const SocialProof = () => {
         </div>
 
         <div className="mt-20 grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+          {testimonialDefs.map((td, i) => (
             <figure
-              key={t.name}
+              key={td.name}
               className="reveal glass rounded-3xl p-7 flex flex-col"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
@@ -62,19 +47,19 @@ export const SocialProof = () => {
                   <Star key={k} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="text-foreground/90 leading-relaxed flex-1">"{t.quote}"</blockquote>
+              <blockquote className="text-foreground/90 leading-relaxed flex-1">"{t(td.quoteKey)}"</blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
                 <img
-                  src={t.avatar}
-                  alt={t.name}
+                  src={td.avatar}
+                  alt={td.name}
                   loading="lazy"
                   width={48}
                   height={48}
                   className="h-12 w-12 rounded-full object-cover ring-2 ring-primary-glow/40"
                 />
                 <div>
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-sm text-muted-foreground">{t.role}</div>
+                  <div className="font-semibold">{td.name}</div>
+                  <div className="text-sm text-muted-foreground">{t(td.roleKey)}</div>
                 </div>
               </figcaption>
             </figure>
