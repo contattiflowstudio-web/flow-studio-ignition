@@ -3,10 +3,16 @@ import { ArrowRight, Sparkles, Star } from "lucide-react";
 import heroMesh from "@/assets/hero-mesh.jpg";
 import { HeroVisual } from "@/components/HeroVisual";
 import { HeroScene } from "@/components/HeroScene";
-
-const rotatingWords = ["Convert", "Inspire", "Scale", "Stand Out"];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export const Hero = () => {
+  const { t } = useLanguage();
+  const rotatingWords = [
+    t("hero.word.1"),
+    t("hero.word.2"),
+    t("hero.word.3"),
+    t("hero.word.4"),
+  ];
   return (
     <section
       id="home"
@@ -47,12 +53,12 @@ export const Hero = () => {
               <Star key={i} className="h-3 w-3 fill-current" />
             ))}
           </div>
-          <span className="text-xs sm:text-sm text-foreground/80">Trusted by 120+ ambitious brands</span>
+          <span className="text-xs sm:text-sm text-foreground/80">{t("hero.badge")}</span>
         </div>
 
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-extrabold leading-[1.02] max-w-6xl mx-auto animate-fade-in-up tracking-tighter">
-          We Build Digital<br />
-          Experiences That{" "}
+          {t("hero.title.line1")}<br />
+          {t("hero.title.line2")}{" "}
           <span className="relative inline-flex items-baseline">
             <span className="relative h-[1em] overflow-hidden align-baseline">
               <span className="flex flex-col text-gradient" style={{ animation: "tick 8s ease-in-out infinite" }}>
@@ -66,28 +72,28 @@ export const Hero = () => {
         </h1>
 
         <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "150ms", opacity: 0 }}>
-          Web design, social media management and digital marketing — all in one studio. We turn pixels into pipeline and ideas into measurable growth.
+          {t("hero.subtitle")}
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "300ms", opacity: 0 }}>
           <Button variant="hero" size="xl" className="group shine" asChild>
             <a href="#portfolio">
               <Sparkles className="h-5 w-5" />
-              See Our Work
+              {t("hero.cta.primary")}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
           </Button>
           <Button variant="ghostGlow" size="xl" asChild>
-            <a href="#contact">Talk to Us</a>
+            <a href="#contact">{t("hero.cta.secondary")}</a>
           </Button>
         </div>
 
         {/* Stats strip */}
         <div className="mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: "450ms", opacity: 0 }}>
           {[
-            { k: "120+", v: "Projects shipped" },
-            { k: "4.9/5", v: "Client rating" },
-            { k: "2.8x", v: "Avg. ROI lift" },
+            { k: t("hero.stat.1.k"), v: t("hero.stat.1.v") },
+            { k: t("hero.stat.2.k"), v: t("hero.stat.2.v") },
+            { k: t("hero.stat.3.k"), v: t("hero.stat.3.v") },
           ].map((s) => (
             <div key={s.v} className="glass rounded-2xl p-5 hover:shadow-glow-soft hover:-translate-y-1 transition-all duration-500">
               <div className="font-display text-2xl sm:text-3xl font-bold text-gradient-primary">{s.k}</div>
@@ -99,7 +105,7 @@ export const Hero = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-muted-foreground animate-float">
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+        <span className="text-[10px] uppercase tracking-[0.3em]">{t("hero.scroll")}</span>
         <div className="h-10 w-[1px] bg-gradient-to-b from-primary-glow to-transparent" />
       </div>
     </section>

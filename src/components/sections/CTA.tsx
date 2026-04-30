@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export const CTA = () => {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="relative py-28 md:py-36">
       <div className="container">
@@ -14,13 +16,13 @@ export const CTA = () => {
           <div className="relative reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-background/20 backdrop-blur-md border border-primary-foreground/20 px-4 py-1.5 mb-6">
               <span className="h-2 w-2 rounded-full bg-primary-foreground animate-pulse" />
-              <span className="text-xs uppercase tracking-[0.2em] text-primary-foreground/90">Now booking — Q3 2025</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-primary-foreground/90">{t("cta.badge")}</span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold text-primary-foreground leading-tight">
-              Ready to elevate your brand?
+              {t("cta.title")}
             </h2>
             <p className="mt-6 text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-              Let's build something great together. Tell us about your project and we'll come back within one business day.
+              {t("cta.subtitle")}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -29,12 +31,12 @@ export const CTA = () => {
                 asChild
               >
                 <a href="mailto:hello@flowstudio.co">
-                  Get a Free Consultation
+                  {t("cta.primary")}
                   <ArrowRight className="h-5 w-5" />
                 </a>
               </Button>
               <a href="#portfolio" className="text-primary-foreground/90 hover:text-primary-foreground underline-offset-4 hover:underline">
-                or browse our work →
+                {t("cta.secondary")}
               </a>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Instagram, Linkedin } from "lucide-react";
 import logo from "@/assets/flow-logo.png";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Behance = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -8,6 +9,7 @@ const Behance = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="relative border-t border-border/50 pt-16 pb-8">
       <div className="container">
@@ -30,25 +32,25 @@ export const Footer = () => {
               </span>
             </a>
             <p className="mt-4 text-muted-foreground max-w-sm">
-              A creative-tech studio designing websites, social presence and digital marketing for brands that mean business.
+              {t("footer.tagline")}
             </p>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold mb-4">Studio</h4>
+            <h4 className="font-display font-semibold mb-4">{t("footer.studio")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#services" className="hover:text-foreground transition-colors">Services</a></li>
-              <li><a href="#why-digital" className="hover:text-foreground transition-colors">Why Digital</a></li>
-              <li><a href="#portfolio" className="hover:text-foreground transition-colors">Portfolio</a></li>
-              <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
+              <li><a href="#services" className="hover:text-foreground transition-colors">{t("nav.services")}</a></li>
+              <li><a href="#why-digital" className="hover:text-foreground transition-colors">{t("nav.whyDigital")}</a></li>
+              <li><a href="#portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</a></li>
+              <li><a href="#contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold mb-4">Get in touch</h4>
+            <h4 className="font-display font-semibold mb-4">{t("footer.contact")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="mailto:hello@flowstudio.co" className="hover:text-foreground transition-colors">hello@flowstudio.co</a></li>
-              <li>Lisbon · Remote worldwide</li>
+              <li>{t("footer.location")}</li>
             </ul>
             <div className="mt-5 flex items-center gap-3">
               {[
@@ -70,8 +72,8 @@ export const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© 2025 Flow Studio. All rights reserved.</p>
-          <p>Crafted with intent — designed to convert.</p>
+          <p>{t("footer.copyright")}</p>
+          <p>{t("footer.crafted")}</p>
         </div>
       </div>
     </footer>

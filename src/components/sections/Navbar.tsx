@@ -6,18 +6,21 @@ import logo from "@/assets/flow-logo.png";
 import logo40 from "@/assets/flow-logo-40.png";
 import logo80 from "@/assets/flow-logo-80.png";
 import logo120 from "@/assets/flow-logo-120.png";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { LanguageToggle } from "@/components/LanguageToggle";
 
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Why Digital", href: "#why-digital" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
-];
+const linkDefs = [
+  { key: "nav.home", href: "#home" },
+  { key: "nav.services", href: "#services" },
+  { key: "nav.whyDigital", href: "#why-digital" },
+  { key: "nav.portfolio", href: "#portfolio" },
+  { key: "nav.contact", href: "#contact" },
+] as const;
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -57,47 +60,51 @@ export const Navbar = () => {
         </a>
 
         <nav className="hidden md:flex items-center gap-1">
-          {links.map((l) => (
+          {linkDefs.map((l) => (
             <a
               key={l.href}
               href={l.href}
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:left-4 after:right-4 after:bottom-1 after:h-px after:scale-x-0 after:bg-gradient-primary after:transition-transform hover:after:scale-x-100"
             >
-              {l.label}
+              {t(l.key)}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <LanguageToggle />
           <Button variant="hero" size="sm" asChild>
-            <a href="#contact">Start Your Project</a>
+            <a href="#contact">{t("nav.cta")}</a>
           </Button>
         </div>
 
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageToggle />
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {open && (
         <div className="md:hidden mt-3 mx-4 rounded-2xl glass-strong p-4 animate-fade-in">
           <nav className="flex flex-col gap-1">
-            {links.map((l) => (
+            {linkDefs.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className="px-3 py-2 rounded-lg text-foreground/90 hover:bg-primary/10"
               >
-                {l.label}
+                {t(l.key)}
               </a>
             ))}
             <Button variant="hero" className="mt-2" asChild>
-              <a href="#contact" onClick={() => setOpen(false)}>Start Your Project</a>
+              <a href="#contact" onClick={() => setOpen(false)}>{t("nav.cta")}</a>
             </Button>
           </nav>
         </div>
