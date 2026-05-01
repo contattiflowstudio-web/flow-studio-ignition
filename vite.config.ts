@@ -5,7 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  BASE: “/flow-studio-ignition/”
+  base: "/flow-studio-ignition", 
+  
   server: {
     host: "::",
     port: 8080,
