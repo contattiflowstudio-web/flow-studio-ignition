@@ -186,7 +186,7 @@ const dict = {
   },
   "footer.studio": { it: "Studio", en: "Studio" },
   "footer.contact": { it: "Contattaci", en: "Get in touch" },
-  "footer.location": { it: "Lisbona · Remoto in tutto il mondo", en: "Lisbon · Remote worldwide" },
+  "footer.location": { it: "Lago di Garda, IT · Remoto in tutto il mondo", en: "Lake Garda, IT · Remote worldwide" },
   "footer.copyright": { it: "© 2025 Flow Studio. Tutti i diritti riservati.", en: "© 2025 Flow Studio. All rights reserved." },
   "footer.crafted": { it: "Realizzato con cura — pensato per convertire.", en: "Crafted with intent — designed to convert." },
 

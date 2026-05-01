@@ -49,18 +49,20 @@ export const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4">{t("footer.contact")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="mailto:hello@flowstudio.co" className="hover:text-foreground transition-colors">hello@flowstudio.co</a></li>
+              <li><a href="mailto:info@flowstudio.it" className="hover:text-foreground transition-colors">info@flowstudio.it</a></li>
               <li>{t("footer.location")}</li>
             </ul>
             <div className="mt-5 flex items-center gap-3">
               {[
-                { Icon: Instagram, href: "#", label: "Instagram" },
+                { Icon: Instagram, href: "https://instagram.com/IGFLOWSTUDIO", label: "Instagram" },
                 { Icon: Linkedin, href: "#", label: "LinkedIn" },
                 { Icon: Behance, href: "#", label: "Behance" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="h-10 w-10 inline-flex items-center justify-center rounded-xl glass hover:shadow-glow-soft hover:-translate-y-0.5 transition-all"
                 >
