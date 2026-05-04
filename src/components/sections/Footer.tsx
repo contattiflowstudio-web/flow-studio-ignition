@@ -1,4 +1,5 @@
 import { Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/flow-logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -15,7 +16,7 @@ export const Footer = () => {
       <div className="container">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
-            <a href="#home" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <span className="inline-flex h-10 w-10 items-center justify-center">
                 <img
                   src={logo}
@@ -30,7 +31,7 @@ export const Footer = () => {
               <span className="font-display text-xl font-bold">
                 Flow <span className="text-gradient-primary">Studio</span>
               </span>
-            </a>
+            </Link>
             <p className="mt-4 text-muted-foreground max-w-sm">
               {t("footer.tagline")}
             </p>
@@ -39,10 +40,10 @@ export const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4">{t("footer.studio")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#services" className="hover:text-foreground transition-colors">{t("nav.services")}</a></li>
-              <li><a href="#why-digital" className="hover:text-foreground transition-colors">{t("nav.whyDigital")}</a></li>
-              <li><a href="#portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</a></li>
-              <li><a href="#contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</a></li>
+              <li><Link to="/services" className="hover:text-foreground transition-colors">{t("nav.services")}</Link></li>
+              <li><Link to="/why-digital" className="hover:text-foreground transition-colors">{t("nav.whyDigital")}</Link></li>
+              <li><Link to="/portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</Link></li>
+              <li><Link to="/contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</Link></li>
             </ul>
           </div>
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,11 +11,11 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 
 const linkDefs = [
-  { key: "nav.home", href: "#home" },
-  { key: "nav.services", href: "#services" },
-  { key: "nav.whyDigital", href: "#why-digital" },
-  { key: "nav.portfolio", href: "#portfolio" },
-  { key: "nav.contact", href: "#contact" },
+  { key: "nav.home", to: "/" },
+  { key: "nav.services", to: "/services" },
+  { key: "nav.whyDigital", to: "/why-digital" },
+  { key: "nav.portfolio", to: "/portfolio" },
+  { key: "nav.contact", to: "/contact" },
 ] as const;
 
 export const Navbar = () => {
@@ -39,7 +40,7 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group">
           <span className="relative inline-flex h-10 w-10 items-center justify-center">
             <img
               src={logo40}
@@ -57,24 +58,24 @@ export const Navbar = () => {
           <span className="font-display text-xl font-bold tracking-tight">
             Flow <span className="text-gradient-primary">Studio</span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-1">
           {linkDefs.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+            <Link
+              key={l.to}
+              to={l.to}
               className="relative px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:left-4 after:right-4 after:bottom-1 after:h-px after:scale-x-0 after:bg-gradient-primary after:transition-transform hover:after:scale-x-100"
             >
               {t(l.key)}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <LanguageToggle />
           <Button variant="hero" size="sm" asChild>
-            <a href="#contact">{t("nav.cta")}</a>
+            <Link to="/contact">{t("nav.cta")}</Link>
           </Button>
         </div>
 
@@ -94,17 +95,17 @@ export const Navbar = () => {
         <div className="md:hidden mt-3 mx-4 rounded-2xl glass-strong p-4 animate-fade-in">
           <nav className="flex flex-col gap-1">
             {linkDefs.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+              <Link
+                key={l.to}
+                to={l.to}
                 onClick={() => setOpen(false)}
                 className="px-3 py-2 rounded-lg text-foreground/90 hover:bg-primary/10"
               >
                 {t(l.key)}
-              </a>
+              </Link>
             ))}
             <Button variant="hero" className="mt-2" asChild>
-              <a href="#contact" onClick={() => setOpen(false)}>{t("nav.cta")}</a>
+              <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.cta")}</Link>
             </Button>
           </nav>
         </div>
